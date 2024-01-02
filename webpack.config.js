@@ -11,7 +11,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name][contenthash].js', //the [contenthash] is to always generate random figure/letters to deal with caching 
-    clean: true //this is to keep one bundle file in the dist dir
+    clean: true, //this is to keep one bundle file in the dist dir
+    assetModuleFilename: '[name][ext]'
   },
 
   devtool: 'source-map', //for debugging
@@ -29,7 +30,7 @@ module.exports = {
 
   module: {
     rules: [
-      {
+      {// styles loader
         test: /\.scss$/,
         use: [
           'style-loader',
@@ -37,7 +38,7 @@ module.exports = {
           'sass-loader',
         ]
       },
-      {
+      { //babel loader
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -46,6 +47,10 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {//asset loader
+        test: /\.(png|svg|jpeg|jpg|gif)$/i,
+        type: 'asset/resource'
       }
     ]
   },
