@@ -10,8 +10,11 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name][contenthash].js' //the [contenthash] is to always generate random figure/letters to deal with caching 
+    filename: '[name][contenthash].js', //the [contenthash] is to always generate random figure/letters to deal with caching 
+    clean: true //this is to keep one bundle file in the dist dir
   },
+
+  devtool: 'source-map', //for debugging
 
   devServer: {
     static: {
@@ -33,6 +36,16 @@ module.exports = {
           'css-loader',
           'sass-loader',
         ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ]
   },
