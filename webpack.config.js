@@ -15,8 +15,13 @@ module.exports = {
 
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'dist')
-    }
+      directory: path.resolve(__dirname, 'dist') 
+    },
+    port: 3000,
+    open: true, //this is to open the browser automatically
+    hot: true,
+    compress: true,
+    historyApiFallback: true
   },
 
   module: {
