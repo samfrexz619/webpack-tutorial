@@ -12,7 +12,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name][contenthash].js', //the [contenthash] is to always generate random figure/letters to deal with caching 
     clean: true, //this is to keep one bundle file in the dist dir
-    assetModuleFilename: '[name][ext]'
+    assetModuleFilename: '[name][ext]' //for images
   },
 
   devtool: 'source-map', //for debugging
